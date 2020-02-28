@@ -225,7 +225,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  aws-sdk-s3 (~> 1.60)
+  aws-sdk-s3
   bootsnap (>= 1.4.2)
   bootstrap (~> 4.4.1)
   byebug

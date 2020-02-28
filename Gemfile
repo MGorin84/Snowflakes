@@ -56,4 +56,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.4.1'
 
 
-gem "aws-sdk-s3", "~> 1.60"
+# gem "aws-sdk-s3", "~> 1.60"
+
+gem 'aws-sdk-s3', require: false
