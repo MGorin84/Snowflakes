@@ -17,5 +17,9 @@
   <%= @artwork.price %>
 </p>
 
-<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-<%= link_to 'Back', artworks_path %>
+<% if @artwork.user == current_user %>
+<%= link_to 'Edit', edit_artwork_path(@artwork) %> 
+<% end %><br>
+<% if @artwork.user == current_user %>
+<%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %> 

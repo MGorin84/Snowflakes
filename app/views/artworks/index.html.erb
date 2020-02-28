@@ -10,13 +10,22 @@
          <%= image_tag artwork.picture %>
         </td>
         <div class="artwork-about">
+          <td>Author:<%= artwork.user.email %></td><br>
           <td>Title:<%= artwork.title %></td><br>
           <td>Deskription:<%= artwork.description %></td><br>
           <td>Price:$<%= artwork.price %></td><br>
           <div class="artwork-links">
-            <td><%= link_to 'Show', artwork %></td> 
-            <td><%= link_to 'Edit', edit_artwork_path(artwork) %></td>
-            <td><%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Show', artwork %></td>
+            <td>
+            <% if artwork.user == current_user %>
+             <%= link_to 'Edit', edit_artwork_path(@artwork) %> 
+            <% end %>
+            </td>
+            <td>
+            <% if artwork.user == current_user %>
+            <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %> 
+            </td>
           </div>
         </div>
       </tr>
