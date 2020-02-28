@@ -1,6 +1,6 @@
 class ArtworksController < ApplicationController
   before_action :set_artwork, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   # GET /artworks
   # GET /artworks.json
   def index
@@ -25,7 +25,7 @@ class ArtworksController < ApplicationController
   # POST /artworks.json
   def create
     @artwork = Artwork.new(artwork_params)
-
+    @artwork.user = current_user
     respond_to do |format|
       if @artwork.save
         format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
@@ -65,6 +65,15 @@ class ArtworksController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_artwork
       @artwork = Artwork.find(params[:id])
+    end
+
+    def authorize_owner
+      return true if @artwork.user == current_user
+
+      flash[:notice] = "You are not permitted to change that photo."
+      redirect_to "/"
+
+      return false
     end
 
     # Only allow a list of trusted parameters through.
