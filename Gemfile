@@ -59,3 +59,5 @@ gem 'bootstrap', '~> 4.4.1'
 # gem "aws-sdk-s3", "~> 1.60"
 
 gem 'aws-sdk-s3', require: false
+
+gem "devise", "~> 4.7"
