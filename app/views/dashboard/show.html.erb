@@ -1,0 +1,31 @@
+<h2>Dashboard</h2>
+
+<h3>Welcome <%= current_user.email %>!</h3>
+
+<h1>My Artworks:</h1>
+<% @artworks.each do |artwork| %>
+    <%= image_tag artwork.picture if artwork.picture.attached? %>
+
+    <p>
+    <strong>Title:</strong>
+    <%= artwork.title %>
+    </p>
+
+    <p>
+    <strong>Description:</strong>
+    <%= artwork.description %>
+    </p>
+
+    <p>
+    <strong>Price:</strong>
+    <%= artwork.price %>
+    </p>
+    <%= link_to 'Edit', edit_artwork_path(artwork) %> |
+    <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <br>
+<% end %>
+
+
+
+
+
