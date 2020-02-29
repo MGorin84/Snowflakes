@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+ .artwork-card {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.artwork-card img {
+    width: 250px;
+    padding: 10px;
+}
+
+.artwork-about {
+    padding: 10px;
+}
+
