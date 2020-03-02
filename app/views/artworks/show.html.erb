@@ -16,7 +16,9 @@
   <strong>Price:</strong>
   <%= @artwork.price %>
 </p>
-
+<% unless current_user == nil || @artwork.user_id == current_user.id %>
+<%= link_to  "Add to cart", purchase_items_path(artwork_id: @artwork.id, pending: true), method: :post %>
+<% end %>
 <% if @artwork.user == current_user %>
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> 
 <% end %><br>

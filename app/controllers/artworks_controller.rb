@@ -29,7 +29,7 @@ class ArtworksController < ApplicationController
     @artwork.user = current_user
     respond_to do |format|
       if @artwork.save
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
+        format.html { redirect_to @artwork, notice: "Artwork was successfully created." }
         format.json { render :show, status: :created, location: @artwork }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class ArtworksController < ApplicationController
   def update
     respond_to do |format|
       if @artwork.update(artwork_params)
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully updated.' }
+        format.html { redirect_to @artwork, notice: "Artwork was successfully updated." }
         format.json { render :show, status: :ok, location: @artwork }
       else
         format.html { render :edit }
@@ -57,28 +57,29 @@ class ArtworksController < ApplicationController
   def destroy
     @artwork.destroy
     respond_to do |format|
-      format.html { redirect_to artworks_url, notice: 'Artwork was successfully destroyed.' }
+      format.html { redirect_to artworks_url, notice: "Artwork was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artwork
-      @artwork = Artwork.find(params[:id])
-    end
 
-    def authorize_owner
-      return true if @artwork.user == current_user
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artwork
+    @artwork = Artwork.find(params[:id])
+  end
 
-      flash[:notice] = "You are not permitted to change that photo."
-      redirect_to "/"
+  def authorize_owner
+    return true if @artwork.user == current_user
 
-      return false
-    end
+    flash[:notice] = "You are not permitted to change that photo."
+    redirect_to "/"
 
-    # Only allow a list of trusted parameters through.
-    def artwork_params
-      params.require(:artwork).permit(:title, :description, :price, :picture, :sold)
-    end
+    return false
+  end
+
+  # Only allow a list of trusted parameters through.
+  def artwork_params
+    params.require(:artwork).permit(:title, :description, :price, :picture, :sold)
+  end
 end

@@ -1,0 +1,23 @@
+<h1>Your cart</h1>
+
+<h2>User details</h2>
+<strong>Name:</strong> <%= @user.name %><br> 
+<strong>Email:</strong> <%= @user.email %>
+
+<% @purchase_items.each do |item| %>
+      <div class="artwork">
+        <div class="artwork-image">
+        <%= image_tag item.artwork.picture, id: 'shopping-item-image' if item.artwork.picture.attached? %>
+        </div>
+        <div class="artwork-details">
+          <div class="artwork-title"><%= item.artwork.title %></div>
+          <p class="artwork-description"><%= item.artwork.description %></p>
+        </div>
+        <div class="artwork-price"><%= number_with_precision(item.artwork.price, :precision => 2)%></div>
+        
+        <div class="product-removal">
+            <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %>
+        </div>
+        
+      </div>
+      <% end %>
