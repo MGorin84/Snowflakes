@@ -2,36 +2,29 @@
 
 <h1>Artworks</h1>
 
+<div class="gallery">
+  <% @artworks.each do |artwork| %>
+   <div class="artwork-card">
+    <%= image_tag artwork.picture %>
+      <div class="artwork-about">
+        Author:<%= artwork.user.email %><br>
+        Title:<%= artwork.title %><br>
+        Description:<%= artwork.description %><br>
+        Price:$<%= artwork.price %><br>
+      <div class="artwork-links">  
+        <%= link_to 'Show', artwork %><br>
+        <% if artwork.user == current_user %>
+          <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
+        <% end %>
 
-  <div class="artwork-card">
-    <% @artworks.each do |artwork| %>
-      <tr>
-        <td>
-         <%= image_tag artwork.picture %>
-        </td>
-        <div class="artwork-about">
-          <td>Author:<%= artwork.user.email %></td><br>
-          <td>Title:<%= artwork.title %></td><br>
-          <td>Deskription:<%= artwork.description %></td><br>
-          <td>Price:$<%= artwork.price %></td><br>
-          <div class="artwork-links">
-            <td><%= link_to 'Show', artwork %></td>
-            <td>
-            <% if artwork.user == current_user %>
-             <%= link_to 'Edit', edit_artwork_path(artwork) %> 
-            <% end %>
-            </td>
-            <td>
-            <% if artwork.user == current_user %>
-            <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <% end %> 
-            </td>
-          </div>
-        </div>
-      </tr>
-    <% end %>
-  </div>
-
+        <% if artwork.user == current_user %>
+          <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %><br>
+        <% end %>
+      </div>
+      </div>
+   </div>
+  <% end %>
+</div>
 
 <br>
 

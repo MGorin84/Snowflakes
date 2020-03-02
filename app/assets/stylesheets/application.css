@@ -13,18 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ * {
+     background-color: rgb(0, 153, 255);
+     color: rgba(46, 42, 42, 1);
+     font-family: 'Courgette';
+ }
+                           
+ .gallery {
+    display: flex;
+    flex-direction: column;
+    
+ }
+
+ .cart {
+     display: flex;
+     flex-direction: column;
+ }
+
  .artwork-card {
     display: flex;
     flex-direction: row;
-    
+    padding: 10px;   
 }
 
-.artwork-card img {
-    width: 250px;
+ .artwork-card img {
+    max-width: 200px; 
+    max-height: 150px;
     padding: 10px;
 }
 
-.artwork-about {
+ .artwork-about {
     padding: 10px;
 }
 
+ .artwork-links {
+    padding: 10px;
+}
