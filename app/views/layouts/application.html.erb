@@ -7,23 +7,38 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Courgette&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   </head>
 
   <body>
-  <div class='container'>
+<div class="navbar">
+
+    <div class="dropdown">
+      <button class="drobbtn">Menu</button>
+      <div class="dropdown-content">
+       <p><%= link_to  "Home", welcome_index_path %></p>
+       <p><%= link_to  "Gallery", artworks_path %></p>
+       <p><%= link_to  "New Artwork", new_artwork_path %></p>
+       <% unless current_user == nil %>
+       <p><%= link_to  "Cart", purchase_items_path %></p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+    <div class='container'>
       <% if user_signed_in? %>
-        Signed in as <%= current_user.email %>
-        <%= link_to "Dashboard", dashboard_index_path %>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+        Signed in as <%= current_user.email %> 
+        <%= link_to "Dashboard", dashboard_index_path %> 
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %> 
       <% else %>
         <%= link_to "Sign in", new_user_session_path %> or
-        <%= link_to "Sign up", new_user_registration_path %>
+        <%= link_to "Sign up", new_user_registration_path %> 
       <% end %>
-
       <p id="alert"><%= alert %></p>
-
       <%= yield %>
-    </div>
-  </body>
+    </div>  
+ </body>
+    <footer>
+    Copyright, 2020 Maria Gorin
+    </footer>
 </html>

@@ -1,27 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @artwork.picture if @artwork.picture.attached? %>
+<div class="artwork-card-large">
+  <%= image_tag @artwork.picture if @artwork.picture.attached? %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @artwork.title %>
-</p>
+  <div class="artwork-about">
+    Title: <%= @artwork.title %><br><br>
+    Description: <%= @artwork.description %><br><br>
+    Price: <%= @artwork.price %><br><br>
+    <div class="artwork-links">
+      <% unless current_user == nil || @artwork.user_id == current_user.id %>
+      <%= link_to  "Add to cart", purchase_items_path(artwork_id: @artwork.id, pending: true), method: :post %>
+      <% end %>
+      <% if @artwork.user == current_user %>
+      <%= link_to 'Edit', edit_artwork_path(@artwork) %> 
+      <% end %><br>
+      <% if @artwork.user == current_user %>
+      <%= link_to 'Destroy', @artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %> 
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @artwork.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @artwork.price %>
-</p>
-<% unless current_user == nil || @artwork.user_id == current_user.id %>
-<%= link_to  "Add to cart", purchase_items_path(artwork_id: @artwork.id, pending: true), method: :post %>
-<% end %>
-<% if @artwork.user == current_user %>
-<%= link_to 'Edit', edit_artwork_path(@artwork) %> 
-<% end %><br>
-<% if @artwork.user == current_user %>
-<%= link_to 'Destroy', @artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %> 
+<%= link_to  "Gallery", artworks_path %>

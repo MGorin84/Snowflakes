@@ -16,10 +16,11 @@
           Price:<%= number_with_precision(item.artwork.price, :precision => 2)%>
         
         <div class="artwork-links">
-            <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %>
-        </div>
-        
-        
+            <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
+            <%= link_to  "Continue shopping", artworks_path %><br>
+        </div>  
       </div>
 </div>
   <% end %>
+
+  <%= link_to  "Back to Gallery", artworks_path %>

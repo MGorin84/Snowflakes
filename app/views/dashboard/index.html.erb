@@ -27,16 +27,17 @@
             <strong>Description:</strong><%= item.artwork.description %><br>
             <strong>Price:</strong><%= item.artwork.price %>
         <div class="artwork-links">
-             <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %>
+             <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
+             <%= link_to  "Continue shopping", artworks_path %><br>
+             <%= link_to  "Go to Cart", purchase_items_path %><br>
         </div>
         </div>
     </div>
 <% end %>
 
 
-<%= link_to  "Cart", purchase_items_path %>
 
-<%= link_to  "Galery", artworks_path %>
+
 
 
 
