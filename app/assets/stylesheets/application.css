@@ -51,7 +51,6 @@
   }
   
   .dropdown-content p {
-    color:;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -64,7 +63,7 @@
   }
   
   .dropdown:hover .dropbtn {
-    background-color:;
+
   }
 
   .gallery {
