@@ -22,5 +22,9 @@
       </div>
 </div>
   <% end %>
-
-  <%= link_to  "Back to Gallery", artworks_path %>
+  <div class="subtotal">
+      <h2>Total price: <%= @total_price %></h2>
+  </div>
+  <%= link_to  "Commit to buy", purchases_path, method: :post %>
+      <br>
+  

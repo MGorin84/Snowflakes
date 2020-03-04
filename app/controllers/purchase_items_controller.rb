@@ -2,7 +2,7 @@ class PurchaseItemsController < ApplicationController
     def index 
         if count_items_in_cart == 0 
           flash[:alert] = "Cart is empty! Please add items before checking out."
-          redirect_to root_path
+          redirect_to artworks_path
         end
         @user = User.find(current_user.id)
         @purchase_items = PurchaseItem.where(pending: true, user_id: @user)
