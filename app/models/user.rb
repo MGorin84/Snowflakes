@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :artworks
-  has_many :purchases
   has_many :purchase_items
+  has_many :comments
 
 end

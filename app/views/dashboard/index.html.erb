@@ -11,8 +11,9 @@
             <strong>Description:</strong><%= artwork.description %><br>
             <strong>Price:</strong><%= artwork.price %>
         <div class="artwork-links">
+            <%= link_to "Mark as sold", artwork, method: :put %><br>
             <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
-            <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
         </div>
     </div>
@@ -20,7 +21,29 @@
 
 <h1>Artworks sold:<h1>
 
-<h1>My Purchases</h1>
+ 
+ <%
+=begin%>
+ <% @artwork.where(@artwork.sold == true).each do |artwork| %>
+    <div class="artwork-card">
+    <%= image_tag artwork.picture if artwork.picture.attached? %>
+        <div class="artwork-about">
+            <strong>Title:</strong><%= artwork.title %><br>
+            <strong>Description:</strong><%= artwork.description %><br>
+            <strong>Price:</strong><%= artwork.price %>
+        <div class="artwork-links">
+            <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
+            <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+        </div>
+    </div>
+<% end %>   
+<%
+=end%>
+
+
+
+<h1>My Wishlist</h1>
 <% @purchase_items.each do |item| %>
     <div class="artwork-card">
     <%= image_tag item.artwork.picture if item.artwork.picture.attached? %>
@@ -31,11 +54,12 @@
         <div class="artwork-links">
              <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
              <%= link_to  "Continue shopping", artworks_path %><br>
-             <%= link_to  "Go to Cart", purchase_items_path %><br>
-        </div>
+             
         </div>
     </div>
 <% end %>
+
+
 
 
 

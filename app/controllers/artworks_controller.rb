@@ -41,15 +41,8 @@ class ArtworksController < ApplicationController
   # PATCH/PUT /artworks/1
   # PATCH/PUT /artworks/1.json
   def update
-    respond_to do |format|
-      if @artwork.update(artwork_params)
-        format.html { redirect_to @artwork, notice: "Artwork was successfully updated." }
-        format.json { render :show, status: :ok, location: @artwork }
-      else
-        format.html { render :edit }
-        format.json { render json: @artwork.errors, status: :unprocessable_entity }
-      end
-    end
+    @artwork = Artwork.find(params[:id])
+    @artwork.update_attribute :sold, true
   end
 
   # DELETE /artworks/1

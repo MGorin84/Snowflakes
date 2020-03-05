@@ -1,4 +1,4 @@
-<h1>Your cart</h1>
+<h1>Your wishlist</h1>
 
 <h2>User details</h2>
 <strong>Name:</strong> <%= @user.name %><br> 
@@ -11,20 +11,19 @@
         <%= image_tag item.artwork.picture, id: 'shopping-item-image' if item.artwork.picture.attached? %>
         </div>
         <div class="artwork-about">
+          Author:<%= item.artwork.user.name %><br>
           Title:<%= item.artwork.title %><br>
           Description:<%= item.artwork.description %><br>
           Price:<%= number_with_precision(item.artwork.price, :precision => 2)%>
         
         <div class="artwork-links">
             <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
-            <%= link_to  "Continue shopping", artworks_path %><br>
+            <%= link_to  "Continue choosing", artworks_path %><br>
         </div>  
       </div>
+
 </div>
+
   <% end %>
-  <div class="subtotal">
-      <h2>Total price: <%= @total_price %></h2>
-  </div>
-  <%= link_to  "Commit to buy", purchases_path, method: :post %>
-      <br>
+  
   

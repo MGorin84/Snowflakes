@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'welcome/index'
   root to: 'welcome#index'
 
-  resources :artworks
+  resources :artworks do
+    resources :comments
+  end
   resources :dashboard, only: [:index]
   resources :purchases
   resources :purchase_items

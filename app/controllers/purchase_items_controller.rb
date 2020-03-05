@@ -1,7 +1,7 @@
 class PurchaseItemsController < ApplicationController
     def index 
         if count_items_in_cart == 0 
-          flash[:alert] = "Cart is empty! Please add items before checking out."
+          flash[:alert] = "Wishlist is empty!"
           redirect_to artworks_path
         end
         @user = User.find(current_user.id)
@@ -18,12 +18,15 @@ class PurchaseItemsController < ApplicationController
       end
     
       def create
+        
         unless current_user == nil
           @purchase_item = PurchaseItem.new(purchase_items_params)
+          @artwork = @purchase_item.artwork
           current_user.purchase_items << @purchase_item
+          
     
           if @purchase_item.save!
-            flash[:success] = "Added item to cart!"
+            flash[:success] = "Added item to wishlist!"
             redirect_to purchase_items_path
           else
             render :new
