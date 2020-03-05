@@ -3,7 +3,8 @@
 <h1>Artwork Gallery</h1>
 
 <div class="gallery">
-  <% @artworks.each do |artwork| %>
+  <% @artworks.where(sold:false).each do |artwork| %>
+  <% if artwork.user.id != current_user.id %> 
    <div class="artwork-card">
     <%= image_tag artwork.picture %>
       <div class="artwork-about">
@@ -23,6 +24,7 @@
       </div>
       </div>
    </div>
+   <% end %>
   <% end %>
 </div>
 

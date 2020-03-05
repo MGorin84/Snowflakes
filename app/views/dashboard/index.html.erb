@@ -3,7 +3,7 @@
 <h3>Welcome <%= current_user.email %>!</h3>
 
 <h1>My Artworks:</h1>
-<% @artworks.where(sold:nil).each do |artwork| %>
+<% @artworks.where(sold:false).each do |artwork| %>
     <div class="artwork-card">
     <%= image_tag artwork.picture if artwork.picture.attached? %>
         <div class="artwork-about">
@@ -53,6 +53,7 @@
 
 
 <h1>My Wishlist</h1>
+
 <% @purchase_items.each do |item| %>
     <div class="artwork-card">
     <%= image_tag item.artwork.picture if item.artwork.picture.attached? %>
@@ -66,6 +67,7 @@
              
         </div>
     </div>
+
 <% end %>
 
 

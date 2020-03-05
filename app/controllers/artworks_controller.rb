@@ -43,7 +43,7 @@ class ArtworksController < ApplicationController
   def update
     @artwork = Artwork.find(params[:id])
     @artwork.update_attribute :sold, true
-    redirect_to dashboard_path
+    redirect_to dashboard_index_path
   end
 
   # DELETE /artworks/1
