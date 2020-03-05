@@ -3,28 +3,40 @@
 <h3>Welcome <%= current_user.email %>!</h3>
 
 <h1>My Artworks:</h1>
-<% @artworks.each do |artwork| %>
+<% @artworks.where(sold:nil).each do |artwork| %>
     <div class="artwork-card">
     <%= image_tag artwork.picture if artwork.picture.attached? %>
         <div class="artwork-about">
             <strong>Title:</strong><%= artwork.title %><br>
             <strong>Description:</strong><%= artwork.description %><br>
             <strong>Price:</strong><%= artwork.price %>
+
         <div class="artwork-links">
             <%= link_to "Mark as sold", artwork, method: :put %><br>
             <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
             <%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
         </div>
+        <div class="artwork-comments">
+            <h3>Comments</h3>
+            <% artwork.comments.each do |comment| %>
+                <p>
+                <strong>Name:</strong>
+                <%= comment.user.name %>
+                </p>
+ 
+                <p>
+                <strong>Comment:</strong>
+                <%= comment.body %>
+                </p>
+            <% end %>
+            </div>
     </div>
 <% end %>
 
-<h1>Artworks sold:<h1>
+<h1>Artworks sold:</h1>
 
- 
- <%
-=begin%>
- <% @artwork.where(@artwork.sold == true).each do |artwork| %>
+    <% @artworks.where(sold:true).each do |artwork| %>
     <div class="artwork-card">
     <%= image_tag artwork.picture if artwork.picture.attached? %>
         <div class="artwork-about">
@@ -38,9 +50,6 @@
         </div>
     </div>
 <% end %>   
-<%
-=end%>
-
 
 
 <h1>My Wishlist</h1>
