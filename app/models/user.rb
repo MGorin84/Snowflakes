@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_many :purchase_items
   has_many :comments
 
+  has_many :conversations, :foreign_key => :sender_id
+
 end
