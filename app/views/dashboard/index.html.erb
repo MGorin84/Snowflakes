@@ -5,7 +5,7 @@
 <h1>My Artworks:</h1>
 <% @artworks.where(sold:false).each do |artwork| %>
     <div class="artwork-card">
-    <%= image_tag artwork.picture if artwork.picture.attached? %>
+    <%= image_tag artwork_picture_url(artwork) %>
         <div class="artwork-about">
             <strong>Title:</strong><%= artwork.title %><br>
             <strong>Description:</strong><%= artwork.description %><br>
@@ -38,7 +38,7 @@
 
     <% @artworks.where(sold:true).each do |artwork| %>
     <div class="artwork-card">
-    <%= image_tag artwork.picture if artwork.picture.attached? %>
+    <%= image_tag artwork_picture_url(artwork)%>
         <div class="artwork-about">
             <strong>Title:</strong><%= artwork.title %><br>
             <strong>Description:</strong><%= artwork.description %><br>
@@ -56,19 +56,22 @@
 
 <% @purchase_items.each do |item| %>
     <div class="artwork-card">
-    <%= image_tag item.artwork.picture if item.artwork.picture.attached? %>
+    <%= image_tag artwork_picture_url(item.artwork) %>
         <div class="artwork-about">
+            <strong>Author:</strong><%= item.artwork.user.name %><br>
             <strong>Title:</strong><%= item.artwork.title %><br>
             <strong>Description:</strong><%= item.artwork.description %><br>
             <strong>Price:</strong><%= item.artwork.price %>
+            
         <div class="artwork-links">
              <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
-             <%= link_to  "Continue shopping", artworks_path %><br>
+            <%= link_to  "Message the artist", conversations_path(sender_id: current_user.id, recipient_id: item.user.id), method: :post %>
              
         </div>
+        </div>
     </div>
-
 <% end %>
+<%= link_to  "Continue shopping", artworks_path %><br>
 
 
 

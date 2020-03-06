@@ -8,22 +8,23 @@
   <% @purchase_items.each do |item| %>
       <div class="artwork-card">
         <div class="artwork-image">
-        <%= image_tag item.artwork.picture, id: 'shopping-item-image' if item.artwork.picture.attached? %>
+        <%= image_tag artwork_picture_url(item.artwork) %>
         </div>
         <div class="artwork-about">
           Author:<%= item.artwork.user.name %><br>
           Title:<%= item.artwork.title %><br>
           Description:<%= item.artwork.description %><br>
-          Price:<%= number_with_precision(item.artwork.price, :precision => 2)%>
+          Price:<%= item.artwork.price %>
         
         <div class="artwork-links">
-            <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
-            <%= link_to  "Continue choosing", artworks_path %><br>
+            <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+           
+            <%= link_to  "Message the artist", conversations_path(sender_id: current_user.id, recipient_id: item.user.id), method: :post %>
         </div>  
       </div>
-
 </div>
 
   <% end %>
+<%= link_to  "Continue choosing", artworks_path %><br>
   
   

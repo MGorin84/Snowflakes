@@ -13,8 +13,9 @@
   <body>
 <div class="navbar">
 
+    
     <div class="dropdown">
-      <button class="drobbtn">Menu</button>
+      <button>Menu</button>
       <div class="dropdown-content">
        <p><%= link_to  "Home", welcome_index_path %></p>
        <p><%= link_to  "Gallery", artworks_path %></p>
@@ -24,12 +25,15 @@
       <% end %>
       </div>
     </div>
+    
     <button>
       <%= link_to "Dashboard", dashboard_index_path %>
     </button>
+    
     <button>
-    <%= link_to  "Mailbox", conversations_path %>
+      <%= link_to  "Mailbox", conversations_path %>
     </button>
+    
   </div>
     <div class='container'>
       <% if user_signed_in? %>
@@ -41,7 +45,9 @@
       <% end %>
       <p id="alert"><%= alert %></p>
       <%= yield %>
-    </div>  
+    </div>
+
+</div> 
  </body>
     <footer>
     Copyright, 2020 Maria Gorin

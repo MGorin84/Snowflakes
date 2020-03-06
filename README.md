@@ -8,7 +8,7 @@ Github:
 
 Trello board:
 
-Wireframes:
+Wireframes: [Snowflakes_wireframes](https://ninjamock.com/s/KKKJWGx)
 
 Moodboard:
 
