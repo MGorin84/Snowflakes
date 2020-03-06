@@ -6,7 +6,7 @@
   <% @artworks.where(sold:false).each do |artwork| %>
   <% if artwork.user.id != current_user.id %> 
    <div class="artwork-card">
-    <%= image_tag artwork.picture %>
+    <%= image_tag artwork_picture_url(artwork) %>
       <div class="artwork-about">
         Author:<%= artwork.user.name %><br>
         Title:<%= artwork.title %><br>

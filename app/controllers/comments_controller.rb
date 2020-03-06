@@ -6,12 +6,12 @@ class CommentsController < ApplicationController
 
     def create
         @artwork = Artwork.find(params[:artwork_id])
-        @comment = @artwork.comments.create(comment_params)
+        @comment = @artwork.comments.build(comment_params)
         @comment.user = current_user
         redirect_to artwork_path(@artwork)
 
         if @comment.save!
-            flash[:success] = "Comment sent!"
+           flash[:success] = "Comment sent!"
         end     
       end
      
