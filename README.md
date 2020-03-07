@@ -90,32 +90,61 @@ It also created for artwork lovers looking to buy online due to interest in inde
 ## Tech stack (e.g. html, css, deployment platform, etc)
 
 - Rails
+
 Snowflakes is written in Ruby using Rails.
 Rails is a development MVC framework used for web application written on Ruby, which provides developers with a database structure, controllers and views
 
 - HTML/erb
+
 Views for Snowflakes are written in HTML with embedded Ruby code.
 
 - CSS
+
 Stylesheets are created with CSS. There is a big area of improvement in styling, which is currently work in progress.
 
 - Deployment platform
+
 Snowflakes applications runs on Heroku which is a cloud base platform hosting web applications.
 
 - Database
-PostgreSQL is used in Snowflakes development as it works better on Heroku deployment platform
+
+PostgreSQL is used in Snowflakes development as it works better on Heroku deployment platform.
+
+- Gems
+
+Devise gem was used to create User model which equipped the app with all the relevant functions like signing in and out, creating password, changing password ect.
+
+Faker is another gem which was used during development to create data for testing
+
+- Storage
+
+AWS Amazon Simple Storage Service(S3), cloud-based platform, was used to store images 
+
+## User stories
 
 
 
+## Explain the different high-level components (abstractions) in your app
 
 
 
+## Detail any third party services that your app will use
 
 
 
+## Describe your projects models in terms of the relationships (active record associations) they have with each other
 
 
 
+## Discuss the database relations to be implemented in your application
+
+
+
+## Provide your database schema design
+
+![schema](app/assets/images/Readme_images/Snowflakes_ERD.png)
+
+## Describe the way tasks are allocated and tracked in your project
 
 
 
