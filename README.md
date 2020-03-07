@@ -4,13 +4,13 @@ Project Snowflakes was created as an assignment for a GenTech-GLG course at Code
 
 Heroku app link: [Snowflakes](http://intense-beach-26117.herokuapp.com/)
 
-Github:
+Github:[GitHub](https://github.com/MGorin84/Snowflakes)
 
-Trello board:
+Trello board: [Trello](https://trello.com/b/rypa01GN/snowflakes)
 
 Wireframes: [Wireframes](https://ninjamock.com/s/KKKJWGx)
 
-Moodboard:
+Moodboard:[Figma](https://www.figma.com/file/ttrm0AsG68hhzqNV9w4C41/Snowflakes?node-id=0%3A1)
 
 ERD: [ERD](https://dbdesigner.page.link/4HSx9Y2fFggrLmDk7)
 
@@ -130,15 +130,51 @@ AWS Amazon Simple Storage Service(S3), cloud-based platform, was used to store i
 
 ## Detail any third party services that your app will use
 
+Devise gem was used to create User model which equipped the app with all the relevant functions like signing in and out, creating password, changing password ect.
 
+AWS Amazon Simple Storage Service(S3), cloud-based platform, was used to store images 
 
 ## Describe your projects models in terms of the relationships (active record associations) they have with each other
 
+Between Snowflakes Active Record models following associations are present:
 
+User:
+
+has_many :artworks;
+has_many :comments;
+has_many :purchase_items;
+has_many :conversations (through sender_id).
+
+Artwork:
+
+belongs_to :user;
+has_one :purchase_item;
+has_many :comments.
+
+Comment:
+
+belongs_to :artwork;
+belongs_to :user.
+
+Purchase_item:
+
+belongs_to :artwork;
+belongs_to :user.
+
+Conversation:
+
+belongs_to :sender (class "User"0);
+belongs_to :recipient (class "User");
+has_many :messages.
+
+Message:
+
+belongs_to :conversation;
+belongs_to :user.
 
 ## Discuss the database relations to be implemented in your application
 
-
+Snowflakes database only has one to one and one to many relations as it was no need to use many to many association. 
 
 ## Provide your database schema design
 
@@ -146,5 +182,27 @@ AWS Amazon Simple Storage Service(S3), cloud-based platform, was used to store i
 
 ## Describe the way tasks are allocated and tracked in your project
 
+Snowflakes is a single developer project created as a part of the assignment at Coder Academy
 
+It started with an idea of an application and a quick handwritten list of features planned for development
+
+Planning process included:
+
+- Creating Trello board for a project with all the technical and documentation requirements for the assignment. Technical requirements were marked as the highest priority with optional features being the lowest. 
+
+- Drawing site map and wire frames for future app
+
+- Drawing ERD for future database, which was edited a few times during the development
+
+The original plan for Snowflakes included:
+
+- Having a user acting as buyer and seller with restriction on ability to edit and delete products. This part was achieved through development. It was also an option of having an admin-user which is still work in progress
+
+- Having an artwork-product available to view, comment on, add to cart and pay for. Payment option is therefore still work in progress and instead of intended cart the app is equipped with a wishlist. It was also decided during the development to created a messenger which allows users to communicate and arrange sales. Items added to wishlist have links to message their owners so buyers don't need to look for particular artists in their mailbox.
+
+- Having a colour theme reflected on our mood board. There were some styling applied to the application but as it still needs improvement it is considered to be work in progress
+
+- Having appropriate documentation completed which was achieved during the work on the project
+
+- Getting comfortable with the Rails project which was achieved trough hard work :)
 
