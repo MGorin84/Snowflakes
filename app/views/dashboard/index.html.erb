@@ -1,85 +1,63 @@
 <h2>Dashboard</h2>
-
 <h3>Welcome <%= current_user.email %>!</h3>
-
 <h1>My Artworks:</h1>
 <% @artworks.where(sold:false).each do |artwork| %>
-    <div class="artwork-card">
+  <div class="artwork-card">
     <%= image_tag artwork_picture_url(artwork) %>
-        <div class="artwork-about">
-            <strong>Title:</strong><%= artwork.title %><br>
-            <strong>Description:</strong><%= artwork.description %><br>
-            <strong>Price:</strong><%= artwork.price %>
-
-        <div class="artwork-links">
-            <%= link_to "Mark as sold", artwork, method: :put %><br>
-            <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
-            <%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-        </div>
-        <div class="artwork-comments">
-            <h3>Comments</h3>
-            <% artwork.comments.each do |comment| %>
-                <p>
-                <strong>Name:</strong>
-                <%= comment.user.name %>
-                </p>
- 
-                <p>
-                <strong>Comment:</strong>
-                <%= comment.body %>
-                </p>
-            <% end %>
-            </div>
+    <div class="artwork-about">
+      Title:<%= artwork.title %><br>
+      Description:<%= artwork.description %><br>
+      Price:<%= artwork.price %>
+      <div class="artwork-links">
+        <%= link_to "Mark as sold", artwork, method: :put %><br>
+        <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
+        <%= link_to 'Destroy', method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
+    <div class="artwork-comments">
+      <h3>Comments</h3>
+      <% artwork.comments.each do |comment| %>
+        <p>
+          <strong>Name:</strong>
+          <%= comment.user.name %>
+        </p>
+        <p>
+          <strong>Comment:</strong>
+          <%= comment.body %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 <% end %>
-
 <h1>Artworks sold:</h1>
-
-    <% @artworks.where(sold:true).each do |artwork| %>
-    <div class="artwork-card">
+<% @artworks.where(sold:true).each do |artwork| %>
+  <div class="artwork-card">
     <%= image_tag artwork_picture_url(artwork)%>
-        <div class="artwork-about">
-            <strong>Title:</strong><%= artwork.title %><br>
-            <strong>Description:</strong><%= artwork.description %><br>
-            <strong>Price:</strong><%= artwork.price %>
-        <div class="artwork-links">
-            <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
-            <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </div>
-        </div>
+    <div class="artwork-about">
+      Title:<%= artwork.title %><br>
+      Description:<%= artwork.description %><br>
+      Price:<%= artwork.price %>
+      <div class="artwork-links">
+        <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
+        <%= link_to 'Destroy', artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
-<% end %>   
-
-
+  </div>
+<% end %>
 <h1>My Wishlist</h1>
-
 <% @purchase_items.each do |item| %>
-    <div class="artwork-card">
+  <div class="artwork-card">
     <%= image_tag artwork_picture_url(item.artwork) %>
-        <div class="artwork-about">
-            <strong>Author:</strong><%= item.artwork.user.name %><br>
-            <strong>Title:</strong><%= item.artwork.title %><br>
-            <strong>Description:</strong><%= item.artwork.description %><br>
-            <strong>Price:</strong><%= item.artwork.price %>
-            
-        <div class="artwork-links">
-             <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
-            <%= link_to  "Message the artist", conversations_path(sender_id: current_user.id, recipient_id: item.user.id), method: :post %>
-             
-        </div>
-        </div>
+    <div class="artwork-about">
+      <strong>Author:</strong><%= item.artwork.user.name %><br>
+      <strong>Title:</strong><%= item.artwork.title %><br>
+      <strong>Description:</strong><%= item.artwork.description %><br>
+      <strong>Price:</strong><%= item.artwork.price %>
+      <div class="artwork-links">
+        <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn   btn-danger' %><br>
+        <%= link_to  "Message the artist", conversations_path(sender_id: current_user.id, recipient_id: item.user.id), method: :post %>
+      </div>
     </div>
+  </div>
 <% end %>
 <%= link_to  "Continue shopping", artworks_path %><br>
-
-
-
-
-
-
-
-
-
-
-

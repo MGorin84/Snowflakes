@@ -1,15 +1,12 @@
-
 <% if current_user == nil %>
-<h1>Welcome to Snowflakes</h1>
-<button class="signbtn">
+  <h1>Welcome to Snowflakes</h1>
+  <button class="signbtn">
     <%= link_to "Sign in", new_user_session_path %>
-</button>
-<button class="signbtn">
+  </button>
+  <button class="signbtn">
     <%= link_to "Sign up", new_user_registration_path %>
-</button>
+  </button>
 <% else %>
-<h1>Welcome to Snowflakes, <%= current_user.name %>!</h1>
+  <h1>Welcome to Snowflakes, <%= current_user.name %>!</h1>
 <% end %>
-
 <br>
-

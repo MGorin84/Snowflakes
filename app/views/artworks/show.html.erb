@@ -1,36 +1,35 @@
 <p id="notice"><%= notice %></p>
-
 <div class="artwork-card-large">
-  <%= image_tag artwork_picture_url(artwork) if @artwork.picture.attached? %>
+  <%= image_tag artwork_picture_url(@artwork) %>
   <br>
-
   <div class="artwork-about">
-    Title: <%= @artwork.title %><br><br>
-    Description: <%= @artwork.description %><br><br>
-    Price: <%= @artwork.price %><br><br>
+    Title: <%= @artwork.title %><br>
+    <br>
+    Description: <%= @artwork.description %><br>
+    <br>
+    Price: <%= @artwork.price %><br>
+    <br>
     <div class="artwork-links">
       <% unless current_user == nil || @artwork.user_id == current_user.id %>
-      <%= link_to  "Add to wishlist", purchase_items_path(artwork_id: @artwork.id, pending: true), method: :post %>
-      
+        <%= link_to  "Add to wishlist", purchase_items_path(artwork_id: @artwork.id, pending: true), method: :post %>
       <% end %>
       <% if @artwork.user == current_user %>
-      <%= link_to 'Edit', edit_artwork_path(@artwork) %><br> 
-      <%= link_to 'Destroy', @artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %> 
+        <%= link_to 'Edit', edit_artwork_path(@artwork) %><br>
+        <%= link_to 'Destroy', @artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   </div>
 </div>
-  <% unless current_user == nil || @artwork.user_id == current_user.id %>
+<% unless current_user == nil || @artwork.user_id == current_user.id %>
   <h2>Add a comment:</h2>
-    <%= form_with(model: [ @artwork, @artwork.comments.build ], local: true) do |form| %>
-      <p>
-        <%= form.label :body %><br>
-        <%= form.text_area :body %>
-      </p>
-      <p>
-        <%= form.submit %>
-      </p>
-    <% end %>
+  <%= form_with(model: [ @artwork, @artwork.comments.build ], local: true) do |form| %>
+    <p>
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </p>
+    <p>
+      <%= form.submit %>
+    </p>
   <% end %>
-
+<% end %>
 <%= link_to  "Gallery", artworks_path %>
