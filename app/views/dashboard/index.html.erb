@@ -1,6 +1,7 @@
 <h2>Dashboard</h2>
 <h3>Welcome <%= current_user.email %>!</h3>
-<h1>My Artworks:</h1>
+<h1>My Available Artworks:</h1>
+<%#to display available artworks%>
 <% @artworks.where(sold:false).each do |artwork| %>
   <div class="artwork-card">
     <%= image_tag artwork_picture_url(artwork) %>
@@ -29,7 +30,8 @@
     </div>
   </div>
 <% end %>
-<h1>Artworks sold:</h1>
+<h1>Artworks I sold:</h1>
+<%#to display only sold artworks%>
 <% @artworks.where(sold:true).each do |artwork| %>
   <div class="artwork-card">
     <%= image_tag artwork_picture_url(artwork)%>

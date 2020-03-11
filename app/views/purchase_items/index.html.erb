@@ -1,5 +1,5 @@
-<h1>Your wishlist</h1>
-<h2>User details</h2>
+<h1>My wishlist</h1>
+<h2>My details</h2>
 <strong>Name:</strong> <%= @user.name %><br>
 <strong>Email:</strong> <%= @user.email %>
 <div class="cart">
@@ -14,7 +14,9 @@
         Description:<%= item.artwork.description %><br>
         Price:<%= item.artwork.price %>
         <div class="artwork-links">
+          <%#to remove item from wishlist%>
           <%= link_to 'Changed my mind', purchase_item_path(id: item.id), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+          <%#to message artwork's owner directly%>
           <%= link_to  "Message the artist", conversations_path(sender_id: current_user.id, recipient_id: item.user.id), method: :post %>
         </div>
       </div>

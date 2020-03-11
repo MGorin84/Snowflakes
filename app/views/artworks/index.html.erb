@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Artwork Gallery</h1>
 <div class="gallery">
+  <%# to make only available artworks from other users displayed%>
   <% @artworks.where(sold:false).each do |artwork| %>
     <% if artwork.user.id != current_user.id %>
       <div class="artwork-card">
@@ -12,6 +13,7 @@
           Price:$<%= artwork.price %><br>
           <div class="artwork-links">
             <%= link_to 'Show', artwork %><br>
+            <%# to make editing and deleting is only available for artwork owner %>
             <% if artwork.user == current_user %>
               <%= link_to 'Edit', edit_artwork_path(artwork) %><br>
             <% end %>

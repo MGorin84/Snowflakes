@@ -1,5 +1,6 @@
 class PurchaseItemsController < ApplicationController
   def index
+    
     if count_items_in_cart == 0
       flash[:alert] = "Wishlist is empty!"
       redirect_to artworks_path
@@ -36,7 +37,7 @@ class PurchaseItemsController < ApplicationController
     @purchase_item.destroy
     redirect_to purchase_items_path
   end
-
+  #count items in a wishlist (originally cart) and total price
   def count_items_in_cart
     @cart_count = 0
     unless current_user == nil

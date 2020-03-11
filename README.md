@@ -122,11 +122,56 @@ AWS Amazon Simple Storage Service(S3), cloud-based platform, was used to store i
 
 ## User stories
 
+Snowflakes has 2 potential kind of user:
 
+- a seller, who is an artist;
+
+- and a buyer willing to buy
+
+Based on this plan I prepared some basic user stories using an online tool [Cardboard](https://cardboardit.com/)
+
+As a seller I want to sell artwork online:
+
+- User can upload artworks online
+- User can arrange sale with a buyer
+
+As a seller I want to be able to manage my artworks:
+
+- User can update or delete their artworks
+- User can see lists of their available artworks and artworks sold
+
+As a seller I want to update a status of my artworks on sale:
+
+- User can change the status of their artworks to sold
+
+As a buyer I want to purchase an artwork online: 
+
+- User can see artwork gallery
+- User can arrange a purchase with an artist
+
+As a buyer I want to
+be able to ask questions about an artwork:
+
+- User can contact the artist
+- User can comment on an artwork
+
+As a buyer I want to
+see a list of artworks I am interested in buying:
+
+- User can create a wishlist
+- User can see items in a wishlist
+
+![User stories](app/assets/images/Readme_images/User_stories.png)
 
 ## Explain the different high-level components (abstractions) in your app
 
+Routes 
 
+Models
+
+Views
+
+Controllers
 
 ## Detail any third party services that your app will use
 
@@ -204,5 +249,5 @@ The original plan for Snowflakes included:
 
 - Having appropriate documentation completed which was achieved during the work on the project
 
-- Getting comfortable with the Rails project which was achieved trough hard work :)
+- Getting comfortable with the Rails project which was achieved through hard work :)
 
