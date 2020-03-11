@@ -165,13 +165,13 @@ see a list of artworks I am interested in buying:
 
 ## Explain the different high-level components (abstractions) in your app
 
-Routes 
+Models in Snowflakes are responsible for data and reflect on the relationship between tables in a database. For example Artwork model is responsible for artworks. It belongs to User model, has one PurchaseItem and has many Comments.
 
-Models
+Views are the front-end of Snowflakes which are build for user interaction. They are made of HTML file with embedded Ruby to view pages, upload information, call appropriate requests ect. and Stylesheets which are in this case are still work in progress due to shortage of time for development.
 
-Views
+Controllers in Snowflakes act as an interface between Views and Model and contain methods used to show, create, edit, update and delete relative data. For example Comments_controller has methods to create new comment attached to an artwork.
 
-Controllers
+Routes in Snowflakes allow the app to direct requests to methods in Controllers.
 
 ## Detail any third party services that your app will use
 
