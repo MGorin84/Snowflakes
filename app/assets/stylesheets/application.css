@@ -15,16 +15,41 @@
  */
 
 * {
+  margin: 0px;
+  padding: 0px;
   background-color: rgba(227, 243, 246, 1);
   color: rgba(46, 42, 42, 1);
   font-family: "Poppins";
 }
 
+h1 {
+  padding: 10px;
+
+}
+
+h2 {
+  padding: 10px;
+}
+
+h3 {
+  padding: 10 px;
+}
+
+.page-wrapper {
+  width: 100vm;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: auto;
+
+}
+
 .navbar {
-  display: flex;
-  flex-direction: row;
   padding-bottom: 20px;
-  justify-content: flex-start;
+}
+
+navbar a {
+  display: inline;
 }
 
 .navbar button a:hover {
@@ -34,6 +59,10 @@
 .navbar button a {
   text-decoration: none;
   color: rgba(46, 42, 42, 1);
+}
+
+.navbar .container {
+  align-self: flex-end;
 }
 
 .dropdown {
@@ -61,6 +90,13 @@
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.welcome {
+  text-align: center;
+  font-size: 250%;
+  padding: 3%;
+
 }
 
 .gallery {
