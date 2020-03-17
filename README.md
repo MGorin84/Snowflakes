@@ -41,16 +41,19 @@ Functionality included in the app you can test includes
     * messaging potential buyers to arrange a sale
     * setting existing product to "sold" and deleting them from the gallery view
 
-
 Login details are provided for testing:
 
+Leo 
 
+e-mail: leo@test.com
 
+password: password
 
-Jo is an artist
+Sonya
 
-Anna is a buyer
+e-mail: sonya@test.com
 
+password: password
 
 ## Identification of the problem you are trying to solve by building this particular marketplace app.
 
