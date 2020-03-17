@@ -44,16 +44,12 @@ Functionality included in the app you can test includes
 Login details are provided for testing:
 
 Leo 
-
-e-mail: leo@test.com
-
-password: password
+- e-mail: leo@test.com
+- password: password
 
 Sonya
-
-e-mail: sonya@test.com
-
-password: password
+- e-mail: sonya@test.com
+- password: password
 
 ## Identification of the problem you are trying to solve by building this particular marketplace app.
 
