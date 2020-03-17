@@ -46,7 +46,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   height: auto;
-  background-image: url(asset_path("preview.jpg"));
+  background-image: url(asset_path("preview1.png"));
   background-repeat: repeat;
   background-size: cover;
 
@@ -133,6 +133,12 @@ h3 {
   padding: 10px;
   font-size: 110%;
   background-color: rgba(227, 243, 246, 1);
+}
+
+.artwork-card-large img {
+  max-width: 400px;
+  max-height: 300px;
+  padding: 10px;
 }
 
 .artwork-card img {
