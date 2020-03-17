@@ -28,8 +28,9 @@
         <button>
           <%= link_to  "Mailbox", conversations_path %>
         </button>
-        <a>
-          <div class='container'>
+        
+      </div>
+          <div class="container">
             <%#Devise code%>
             <% if user_signed_in? %>
               Signed in as <%= current_user.email %>
@@ -41,8 +42,7 @@
             <p id="alert"><%= alert %></p>
             <%= yield %>
           </div>
-        </a>
-      </div>
+        
     </div>
   </body>
   <footer>
